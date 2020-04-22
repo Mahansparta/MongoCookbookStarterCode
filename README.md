@@ -17,6 +17,7 @@ Chef is a configuration management tool for automating machine which are setup o
 - Vagrant
 - Virtual box
 - AWS CLI
+- AWS account
 
 ## Steps
 The steps below will show you how to run this cookbook, please ensure you cloned the repo and navigate to your folder called 'MongoCookbookStarterCode' within your terminal.
