@@ -1,40 +1,53 @@
-# Mongo DB Cookbok :taco:
+# Mongo DB Cookbook :monkey: :cyclone:
+This cookbook contains Mongo DB and by following the steps below you will be able to install Mongo DB from source using the cookbook.
 
-This cookbook install mongodb from source.
-It creates it's own apt package and then installs it.
-The recipe also create the config files and the service file with dynamic input of variables.
+Chef is a configuration management tool for automating machine which are setup on physical servers, virtual machines and in the cloud. Configuration management is all about trying to ensure that the files and software you are expecting to be on a machine are present, configured correctly, and working as intended.
 
-## Installs
-- Mogodb
+#### Benefits of Chef
+- Accelerating software delivery
+- Increased service Resiliency
+- Risk Management
+- Cloud Adoption
+- Infrastructure agnostic
 
-## Option and setting Variables
+### Pre-requisites
 
-Changes are made in the attribute file.
-Changing the port:
+- Chef
+- Git
+- Vagrant
+- Virtual box
+- AWS CLI
 
+## Steps
+The steps below will show you how to run this cookbook, please ensure you cloned the repo and navigate to your folder called 'MongoCookbookStarterCode' within your terminal.
+
+After you have done that, please follow the commands below.
+
+##### Test locally
+We will test locally first to ensure that all the tests pass, to do this run the unit tests:
 ```
-# attributes/default.rb
-
-default['mongo']['port'] = <new_value_here>
+$ chef exec rspec
+```
+Now locally run the integration tests and close machine:
+```
+$ kitchen test
+```
+##### Test in AWS
+Now that all our test have passed, we will run the integration test in AWS:
+```
+KITCHEN_YAML=.kitchen_cloud.yml kitchen test
 ```
 
+If you fail to connect to AWS or having any issues, this maybe due to the 'subnet_id' or 'region'.
+The 'subnet_id' can cause issues if you are using the incorrect subnet, so change the subnet_id to your subnet.
 
-## Commands
-### test locally
+Also the 'region' maybe cause your connection to be slow if you are connecting to region that is far from you, so change this to a region that is closer to you.
 
-Running my unit test:
-```
-chef exec rspec
-```
+## Authors
 
-running integration tests and closing machine:
-```
-kitchen test
-```
+**Mahan Jahromi** - *DevOps Engineer* - [Mahansparta](https://github.com/Mahansparta)
 
-### test in AWS
+#### Acknowledgments
 
-Running integration tests in AWS
-```
-KITCHEN_YAML=kitchen_cloud.yml kitchen test
-```
+* Hat tip to anyone whose helped me with this Project
+* Inspiration  - Filipe Paiva
